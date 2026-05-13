@@ -1,0 +1,36 @@
+[project]
+name = "fastapi-template"
+version = "0.1.0"
+description = "API-only FastAPI template"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi",
+    "uvicorn[standard]"
+]
+
+[project.optional-dependencies]
+postgres = [
+    "psycopg[binary]>=3.2.0,<3.3",
+]
+mysql = [
+    "mysqlclient>=2.2.7,<3",
+]
+oracle = [
+    "oracledb>=3.4.0,<4",
+]
+cockroachdb = [
+    "psycopg[binary]>=3.2.0,<3.3",
+]
+tidb = [
+    "mysqlclient>=2.2.7,<3",
+]
+yugabytedb = [
+    "psycopg[binary]>=3.2.0,<3.3",
+]
+
+[dependency-groups]
+dev = []
+
+[tool.uv]
+package = false
