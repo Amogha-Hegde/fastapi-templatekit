@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import argparse
 
+from fastapi_template.commands.help import add_help_parser
 from fastapi_template.commands.startapp import add_startapp_parser
 from fastapi_template.commands.startproject import add_startproject_parser
 
@@ -15,6 +16,7 @@ def build_parser() -> argparse.ArgumentParser:
 
     add_startproject_parser(subparsers)
     add_startapp_parser(subparsers)
+    add_help_parser(subparsers)
 
     return parser
 

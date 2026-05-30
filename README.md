@@ -37,6 +37,12 @@ For local development from this repository:
 uvx --from . fastapi-template startproject myproject
 ```
 
+Show available commands and details:
+
+```bash
+uvx fastapi-template help
+```
+
 Generated projects keep the main router beside `main.py`:
 
 ```text
