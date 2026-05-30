@@ -1,3 +1,7 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "fastapi-template"
 version = "0.1.0"
@@ -5,7 +9,9 @@ description = "API-only FastAPI template"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
+    "asyncpg",
     "fastapi",
+    "fastapi-websockets",
     "uvicorn[standard]"
 ]
 
@@ -32,5 +38,14 @@ yugabytedb = [
 [dependency-groups]
 dev = []
 
+[project.scripts]
+fastapi-template = "fastapi_template.cli:main"
+
 [tool.uv]
-package = false
+package = true
+
+[tool.setuptools.packages.find]
+include = ["fastapi_template*"]
+
+[tool.setuptools.package-data]
+fastapi_template = ["templates/**/*"]

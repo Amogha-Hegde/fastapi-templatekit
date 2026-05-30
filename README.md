@@ -1,6 +1,23 @@
 # fastapi-template
 A FastAPI template with a root-level, Django-style app layout.
 
+## CLI
+
+Create a new project without installing this template into that project's
+environment:
+
+```bash
+uvx fastapi-template startproject myproject
+cd myproject
+uvx fastapi-template startapp users
+```
+
+For local development from this repository:
+
+```bash
+uvx --from . fastapi-template startproject myproject
+```
+
 ## Structure
 
 ```text
@@ -20,6 +37,40 @@ Feature apps and the shared API router live directly under the project root, sim
 
 ```bash
 uv run uvicorn main.app:app --reload
+```
+
+## WebSockets
+
+WebSocket routes are mounted under the same API prefix, so the default endpoint is:
+
+```text
+/api/v1/ws/{room_name}
+```
+
+There is also a built-in browser test page at:
+
+```text
+/api/v1/ws/test
+```
+
+This app uses `fastapi-websockets` with the package's environment-based channel-layer loader.
+
+For PostgreSQL, configure:
+
+```text
+FASTAPI_WEBSOCKETS_BACKEND=postgresql
+FASTAPI_WEBSOCKETS_POSTGRESQL_DSN=postgresql://db:pass%40123@localhost:5432/db
+```
+
+Tests force `FASTAPI_WEBSOCKETS_BACKEND=inmemory` so they do not depend on a running database.
+
+Example session:
+
+```text
+connect ws://127.0.0.1:8000/api/v1/ws/demo
+receive {"event":"connected","room":"demo",...}
+send {"sender":"alice","message":"hello"}
+receive {"event":"message","room":"demo","sender":"alice","message":"hello"}
 ```
 
 ## Docker
