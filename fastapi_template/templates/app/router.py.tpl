@@ -2,10 +2,8 @@ from __future__ import annotations
 
 from fastapi import APIRouter
 
+from $app_name.endpoints.api import router as api_router
+
 
 router = APIRouter()
-
-
-@router.get("/")
-async def list_$app_name() -> dict[str, str]:
-    return {"message": "$app_name app is ready"}
+router.include_router(api_router)

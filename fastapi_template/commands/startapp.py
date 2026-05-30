@@ -11,9 +11,13 @@ from fastapi_template.commands.validation import normalize_package_name, validat
 APP_TEMPLATES = (
     ("app/__init__.py.tpl", "{app_name}/__init__.py"),
     ("app/router.py.tpl", "{app_name}/router.py"),
-    ("app/schemas.py.tpl", "{app_name}/schemas.py"),
-    ("app/service.py.tpl", "{app_name}/service.py"),
-    ("app/models.py.tpl", "{app_name}/models.py"),
+    ("app/endpoints/__init__.py.tpl", "{app_name}/endpoints/__init__.py"),
+    ("app/endpoints/api.py.tpl", "{app_name}/endpoints/api.py"),
+    ("app/schemas/__init__.py.tpl", "{app_name}/schemas/__init__.py"),
+    ("app/schemas/validator.py.tpl", "{app_name}/schemas/validator.py"),
+    ("app/service/__init__.py.tpl", "{app_name}/service/__init__.py"),
+    ("app/service/app_service.py.tpl", "{app_name}/service/{app_name}_service.py"),
+    ("app/models/__init__.py.tpl", "{app_name}/models/__init__.py"),
 )
 
 

@@ -51,9 +51,17 @@ myproject/
 └── users/
     ├── __init__.py
     ├── router.py
-    ├── schemas.py
-    ├── service.py
-    └── models.py
+    ├── endpoints/
+    │   ├── __init__.py
+    │   └── api.py
+    ├── schemas/
+    │   ├── __init__.py
+    │   └── validator.py
+    ├── service/
+    │   ├── __init__.py
+    │   └── users_service.py
+    └── models/
+        └── __init__.py
 ```
 
 ## Structure
