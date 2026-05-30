@@ -18,6 +18,13 @@ Create the project files directly in the current directory:
 uvx fastapi-template startproject myproject .
 ```
 
+If generated files already exist, the CLI asks before overwriting them. Use
+`--force` to overwrite without a prompt:
+
+```bash
+uvx fastapi-template startproject myproject . --force
+```
+
 Create the project at a custom path:
 
 ```bash

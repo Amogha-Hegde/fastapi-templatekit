@@ -30,6 +30,11 @@ def add_startproject_parser(subparsers: argparse._SubParsersAction[argparse.Argu
         nargs="?",
         help="Optional destination directory. Use '.' to create files in the current directory.",
     )
+    parser.add_argument(
+        "--force",
+        action="store_true",
+        help="Overwrite existing project files without prompting.",
+    )
     parser.set_defaults(handler=handle_startproject)
 
 
@@ -55,9 +60,12 @@ def handle_startproject(args: argparse.Namespace) -> None:
     ]
     existing_paths = [destination for destination in destinations if destination.exists()]
 
-    if existing_paths:
+    if existing_paths and not args.force:
         conflicts = "\n".join(f"  {path}" for path in existing_paths)
-        raise SystemExit(f"Error: project files already exist:\n{conflicts}")
+        print(f"Project files already exist:\n{conflicts}")
+        answer = input("Overwrite these files? [y/N]: ").strip().lower()
+        if answer not in {"y", "yes"}:
+            raise SystemExit("Aborted.")
 
     for template_path, destination_pattern in PROJECT_TEMPLATES:
         destination = target_dir / destination_pattern.format(**context)
