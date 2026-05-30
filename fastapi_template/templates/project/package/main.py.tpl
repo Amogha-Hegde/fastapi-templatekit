@@ -2,8 +2,8 @@ from __future__ import annotations
 
 from fastapi import FastAPI
 
-from $package_name.api.router import api_router
 from $package_name.config import settings
+from $package_name.router import api_router
 
 
 app = FastAPI(

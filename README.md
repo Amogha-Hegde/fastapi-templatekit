@@ -12,10 +12,41 @@ cd myproject
 uvx fastapi-template startapp users
 ```
 
+Create the project files directly in the current directory:
+
+```bash
+uvx fastapi-template startproject myproject .
+```
+
+Create the project at a custom path:
+
+```bash
+uvx fastapi-template startproject myproject ../services/myproject
+```
+
 For local development from this repository:
 
 ```bash
 uvx --from . fastapi-template startproject myproject
+```
+
+Generated projects keep the main router beside `main.py`:
+
+```text
+myproject/
+├── pyproject.toml
+├── fastapi_template.toml
+├── myproject/
+│   ├── __init__.py
+│   ├── main.py
+│   ├── config.py
+│   └── router.py
+└── users/
+    ├── __init__.py
+    ├── router.py
+    ├── schemas.py
+    ├── service.py
+    └── models.py
 ```
 
 ## Structure
@@ -99,4 +130,4 @@ If you enable extras like `mysqlclient` or `psycopg`, you will likely need to ex
 
 ## Add a new app
 
-Create a root-level package such as `users/` or `orders/`, define its router there, and include it from `api/router.py`.
+Create a root-level package such as `users/` or `orders/`, define its router there, and include it from your project's main `router.py`.
