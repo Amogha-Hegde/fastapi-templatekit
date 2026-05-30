@@ -34,6 +34,18 @@ Available commands:
       - Includes a hello-world GET endpoint.
       - Prints the router registration lines for your project router.py.
 
+  addhealthprobes
+    Create a root-level healthprobes app inside an existing generated project.
+
+    Example:
+      fastapi-template addhealthprobes
+
+    Details:
+      - Must be run from a directory containing fastapi_template.toml.
+      - Creates /healthz and /livez GET endpoints.
+      - Prints the router registration lines for your project router.py.
+      - Use --force to overwrite generated healthprobes files without prompting.
+
   help
     Show this command summary.
 

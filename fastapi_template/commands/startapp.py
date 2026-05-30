@@ -1,9 +1,9 @@
 from __future__ import annotations
 
 import argparse
-import tomllib
 from pathlib import Path
 
+from fastapi_template.commands.project import load_project_config
 from fastapi_template.commands.rendering import render_template
 from fastapi_template.commands.validation import normalize_package_name, validate_package_name
 
@@ -32,16 +32,7 @@ def add_startapp_parser(subparsers: argparse._SubParsersAction[argparse.Argument
 
 def handle_startapp(args: argparse.Namespace) -> None:
     project_root = Path.cwd()
-    marker_path = project_root / "fastapi_template.toml"
-
-    if not marker_path.exists():
-        raise SystemExit(
-            "Error: startapp must be run inside a fastapi-template project.\n"
-            "Run: fastapi-template startproject <project_name>"
-        )
-
-    marker = tomllib.loads(marker_path.read_text(encoding="utf-8"))
-    project = marker.get("project", {})
+    project = load_project_config(project_root)
     apps_dir = project_root / project.get("apps_dir", ".")
 
     app_name = validate_package_name(

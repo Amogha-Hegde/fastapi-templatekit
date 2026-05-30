@@ -43,6 +43,12 @@ Show available commands and details:
 uvx fastapi-template help
 ```
 
+Add health probes to an existing generated project:
+
+```bash
+uvx fastapi-template addhealthprobes
+```
+
 Generated projects keep the main router beside `main.py`:
 
 ```text
