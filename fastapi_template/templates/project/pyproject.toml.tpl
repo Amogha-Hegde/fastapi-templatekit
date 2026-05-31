@@ -1,3 +1,7 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "$project_name"
 version = "0.1.0"
@@ -17,3 +21,6 @@ $package_name = "$package_name.cli:app"
 dev = [
     "pytest",
 ]
+
+[tool.setuptools.packages.find]
+include = ["$package_name*"]
