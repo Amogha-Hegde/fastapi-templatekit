@@ -37,6 +37,13 @@ For local development from this repository:
 uvx --from . fastapi-template startproject myproject
 ```
 
+Generated projects include a Typer management command to discover registered
+HTTP and websocket routes:
+
+```bash
+uv run myproject urls
+```
+
 Show available commands and details:
 
 ```bash

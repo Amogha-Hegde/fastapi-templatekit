@@ -13,6 +13,7 @@ PROJECT_TEMPLATES = (
     ("project/env.example.tpl", ".env.example"),
     ("project/README.md.tpl", "README.md"),
     ("project/package/__init__.py.tpl", "{package_name}/__init__.py"),
+    ("project/package/cli.py.tpl", "{package_name}/cli.py"),
     ("project/package/main.py.tpl", "{package_name}/main.py"),
     ("project/package/config.py.tpl", "{package_name}/config.py"),
     ("project/package/router.py.tpl", "{package_name}/router.py"),
@@ -77,3 +78,4 @@ def handle_startproject(args: argparse.Namespace) -> None:
         print(f"  cd {target_dir}")
     print(f"  uv sync")
     print(f"  uv run uvicorn {package_name}.main:app --reload")
+    print(f"  uv run {package_name} urls")
