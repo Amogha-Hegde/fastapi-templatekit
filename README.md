@@ -49,6 +49,13 @@ Add health probes to an existing generated project:
 uvx fastapi-template addhealthprobes
 ```
 
+Create an app with optional websocket and database scaffolding:
+
+```bash
+uvx fastapi-template startapp users
+uvx fastapi-template startapp users --with-websockets --with-database
+```
+
 Generated projects keep the main router beside `main.py`:
 
 ```text
@@ -72,8 +79,11 @@ myproject/
     ├── service/
     │   ├── __init__.py
     │   └── users_service.py
-    └── models/
-        └── __init__.py
+    ├── models/          # created only with database/tables enabled
+    │   └── __init__.py
+    └── websocket/       # created only with websockets enabled
+        ├── __init__.py
+        └── router.py
 ```
 
 ## Structure

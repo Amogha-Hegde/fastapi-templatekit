@@ -27,11 +27,16 @@ Available commands:
 
     Example:
       fastapi-template startapp users
+      fastapi-template startapp users --with-websockets --with-database
 
     Details:
       - Must be run from a directory containing fastapi_template.toml.
-      - Creates endpoints, schemas, service, models, and router.py.
+      - Creates endpoints, schemas, service, and router.py.
       - Includes a hello-world GET endpoint.
+      - Asks whether to include websockets.
+      - Asks whether to include database/tables.
+      - Use --with-websockets to add websocket scaffolding without prompting for it.
+      - Use --with-database to add the models folder without prompting for it.
       - Prints the router registration lines for your project router.py.
 
   addhealthprobes
