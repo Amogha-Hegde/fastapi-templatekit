@@ -1,4 +1,11 @@
 # fastapi-template
+
+[![Tests](https://github.com/Amogha-Hegde/fastapi-template/actions/workflows/ci.yml/badge.svg)](https://github.com/Amogha-Hegde/fastapi-template/actions/workflows/ci.yml)
+[![Coverage](https://codecov.io/gh/Amogha-Hegde/fastapi-template/branch/main/graph/badge.svg)](https://codecov.io/gh/Amogha-Hegde/fastapi-template)
+[![PyPI version](https://img.shields.io/pypi/v/fastapi-template.svg)](https://pypi.org/project/fastapi-template/)
+[![Python versions](https://img.shields.io/pypi/pyversions/fastapi-template.svg)](https://pypi.org/project/fastapi-template/)
+[![PyPI downloads](https://static.pepy.tech/badge/fastapi-template)](https://pepy.tech/project/fastapi-template)
+
 A FastAPI template with a root-level, Django-style app layout.
 
 ## CLI
