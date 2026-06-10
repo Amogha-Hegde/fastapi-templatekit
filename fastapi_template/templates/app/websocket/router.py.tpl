@@ -1,17 +1,19 @@
 from __future__ import annotations
 
-from fastapi import APIRouter, WebSocket, WebSocketDisconnect
+from fastapi import APIRouter, WebSocket
+from fastapi_websockets import AsyncWebSocketConsumer, get_channel_layer
 
 
 router = APIRouter()
+channel_layer = get_channel_layer()
+
+
+class EchoConsumer(AsyncWebSocketConsumer):
+    async def receive_text(self, text_data: str) -> None:
+        await self.send_json({"message": text_data})
 
 
 @router.websocket("/ws")
 async def websocket_endpoint(websocket: WebSocket) -> None:
-    await websocket.accept()
-    try:
-        while True:
-            message = await websocket.receive_text()
-            await websocket.send_json({"message": message})
-    except WebSocketDisconnect:
-        return
+    consumer = EchoConsumer(layer=channel_layer)
+    await consumer(websocket)
