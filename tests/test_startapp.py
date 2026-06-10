@@ -65,6 +65,10 @@ def test_startapp_with_websockets_uses_class_based_consumer(
         'api_router.include_router(chat_websocket_router, prefix="/chat")'
         in output
     )
+    assert (
+        "Info: for websocket-related environment configuration, refer to "
+        "https://github.com/Amogha-Hegde/fastapi-websockets"
+    ) in output
     assert "app.include_router(chat_websocket_router" not in output
 
 

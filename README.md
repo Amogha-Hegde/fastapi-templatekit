@@ -129,13 +129,7 @@ There is also a built-in browser test page at:
 ```
 
 This app uses `fastapi-websockets` with the package's environment-based channel-layer loader.
-
-For PostgreSQL, configure:
-
-```text
-FASTAPI_WEBSOCKETS_BACKEND=postgresql
-FASTAPI_WEBSOCKETS_POSTGRESQL_DSN=postgresql://db:pass%40123@localhost:5432/db
-```
+For websocket-related environment configuration, refer to https://github.com/Amogha-Hegde/fastapi-websockets.
 
 Tests force `FASTAPI_WEBSOCKETS_BACKEND=inmemory` so they do not depend on a running database.
 
@@ -147,30 +141,6 @@ receive {"event":"connected","room":"demo",...}
 send {"sender":"alice","message":"hello"}
 receive {"event":"message","room":"demo","sender":"alice","message":"hello"}
 ```
-
-## Docker
-
-Build the production image:
-
-```bash
-docker build -f deployment/Dockerfile -t fastapi-template .
-```
-
-Build with optional dependency groups from `pyproject.toml`:
-
-```bash
-docker build -f deployment/Dockerfile --build-arg INSTALL_EXTRAS=postgres -t fastapi-template .
-```
-
-Run it:
-
-```bash
-docker run --rm -p 8000:8000 fastapi-template
-```
-
-The Docker image is multi-stage, uses a non-root runtime user, and keeps the runtime image minimal.
-Dependencies are installed from `pyproject.toml` with `uv`, and optional groups can be selected with `INSTALL_EXTRAS`.
-If you enable extras like `mysqlclient` or `psycopg`, you will likely need to extend the Dockerfile with the required OS-level client libraries.
 
 ## Add a new app
 

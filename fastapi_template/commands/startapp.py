@@ -30,6 +30,7 @@ WEBSOCKET_APP_TEMPLATES = (
 )
 
 WEBSOCKET_DEPENDENCY = "fastapi-websockets"
+WEBSOCKET_CONFIG_DOCS_URL = "https://github.com/Amogha-Hegde/fastapi-websockets"
 
 
 def add_startapp_parser(subparsers: argparse._SubParsersAction[argparse.ArgumentParser]) -> None:
@@ -95,6 +96,10 @@ def handle_startapp(args: argparse.Namespace) -> None:
         print("Register the websocket router in your project API router:")
         print(f"  from {app_name}.websocket.router import router as {app_name}_websocket_router")
         print(f"  api_router.include_router({app_name}_websocket_router, prefix=\"/{context['route_prefix']}\")")
+        print(
+            "Info: for websocket-related environment configuration, refer to "
+            f"{WEBSOCKET_CONFIG_DOCS_URL}"
+        )
 
 
 def ask_yes_no(question: str) -> bool:
