@@ -9,8 +9,14 @@ channel_layer = get_channel_layer()
 
 
 class EchoConsumer(AsyncWebSocketConsumer):
+    async def connect(self) -> None:
+        await self.accept()
+
     async def receive_text(self, text_data: str) -> None:
         await self.send_json({"message": text_data})
+
+    async def disconnect(self, close_code: int | None) -> None:
+        del close_code
 
 
 @router.websocket("/ws")
