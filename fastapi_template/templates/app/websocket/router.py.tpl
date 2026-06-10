@@ -16,7 +16,7 @@ class EchoConsumer(AsyncWebSocketConsumer):
         await self.send_json({"message": text_data})
 
     async def disconnect(self, close_code: int | None) -> None:
-        del close_code
+        print("WebSocket disconnected:", close_code)
 
 
 @router.websocket("/ws")
