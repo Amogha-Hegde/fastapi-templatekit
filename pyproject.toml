@@ -5,38 +5,16 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "fastapi-template"
 version = "0.1.0"
-description = "API-only FastAPI template"
+description = "FastAPI project generator with a root-level, Django-style app layout"
 readme = "README.md"
 requires-python = ">=3.11"
-dependencies = [
-    "asyncpg",
-    "fastapi",
-    "fastapi-websockets",
-    "uvicorn[standard]"
-]
-
-[project.optional-dependencies]
-postgres = [
-    "psycopg[binary]>=3.2.0,<3.3",
-]
-mysql = [
-    "mysqlclient>=2.2.7,<3",
-]
-oracle = [
-    "oracledb>=3.4.0,<4",
-]
-cockroachdb = [
-    "psycopg[binary]>=3.2.0,<3.3",
-]
-tidb = [
-    "mysqlclient>=2.2.7,<3",
-]
-yugabytedb = [
-    "psycopg[binary]>=3.2.0,<3.3",
-]
+dependencies = []
 
 [dependency-groups]
-dev = []
+dev = [
+    "pytest",
+    "pytest-cov",
+]
 
 [project.scripts]
 fastapi-template = "fastapi_template.cli:main"
@@ -49,3 +27,48 @@ include = ["fastapi_template*"]
 
 [tool.setuptools.package-data]
 fastapi_template = ["templates/**/*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py", "*_test.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+pythonpath = ["."]
+addopts = [
+    "-v",
+    "--color=yes",
+    "--capture=no",
+    "--tb=short",
+    "--strict-markers",
+    "--disable-warnings",
+    "--cov=fastapi_template",
+    "--cov-report=term-missing:skip-covered",
+    "--cov-report=xml",
+    "--cov-fail-under=90",
+]
+filterwarnings = [
+    "ignore::DeprecationWarning",
+    "ignore::PendingDeprecationWarning",
+    "ignore::UserWarning",
+]
+markers = [
+    "unit: marks unit tests (fast)",
+    "integration: marks integration tests (slower, may hit DB or network)",
+    "functional: marks end-to-end or workflow tests",
+    "slow: marks tests that take longer to run",
+    "smoke: marks basic smoke sanity tests",
+]
+
+[tool.coverage.run]
+source = ["fastapi_template"]
+relative_files = true
+omit = [
+    "venv/*",
+    "*/__init__.py",
+]
+
+[tool.coverage.report]
+omit = [
+    "venv/*",
+    "*/__init__.py",
+]
