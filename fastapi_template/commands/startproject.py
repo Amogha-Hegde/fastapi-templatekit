@@ -9,6 +9,7 @@ from fastapi_template.commands.validation import normalize_package_name, validat
 
 PROJECT_TEMPLATES = (
     ("project/pyproject.toml.tpl", "pyproject.toml"),
+    ("project/gitignore.tpl", ".gitignore"),
     ("project/fastapi_template.toml.tpl", "fastapi_template.toml"),
     ("project/env.example.tpl", ".env.example"),
     ("project/README.md.tpl", "README.md"),

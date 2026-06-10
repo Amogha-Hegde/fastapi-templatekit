@@ -86,9 +86,9 @@ def handle_startapp(args: argparse.Namespace) -> None:
     print(f"  from {app_name}.router import router as {app_name}_router")
     print(f"  api_router.include_router({app_name}_router, prefix=\"/{context['route_prefix']}\", tags=[\"{app_name}\"])")
     if include_websockets:
-        print("Register the websocket router in your FastAPI app:")
+        print("Register the websocket router in your project API router:")
         print(f"  from {app_name}.websocket.router import router as {app_name}_websocket_router")
-        print(f"  app.include_router({app_name}_websocket_router, prefix=\"/{context['route_prefix']}\")")
+        print(f"  api_router.include_router({app_name}_websocket_router, prefix=\"/{context['route_prefix']}\")")
 
 
 def ask_yes_no(question: str) -> bool:
