@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+import runpy
 import sys
 
 import pytest
@@ -39,6 +40,15 @@ def test_main_dispatches_selected_handler(monkeypatch) -> None:
     cli.main()
 
     assert "args" in called
+
+
+def test_cli_module_guard_runs_main(monkeypatch, capsys) -> None:
+    monkeypatch.setattr(sys, "argv", ["fastapi-template", "help"])
+    monkeypatch.delitem(sys.modules, "fastapi_template.cli")
+
+    runpy.run_module("fastapi_template.cli", run_name="__main__")
+
+    assert "Available commands:" in capsys.readouterr().out
 
 
 def test_help_command_prints_summary(capsys) -> None:

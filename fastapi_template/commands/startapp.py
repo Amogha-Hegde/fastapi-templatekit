@@ -149,7 +149,7 @@ def ensure_project_dependency(project_root: Path, dependency: str) -> None:
         ),
         None,
     )
-    if dependencies_end is None:
+    if dependencies_end is None:  # pragma: no cover
         raise SystemExit(f"Error: invalid dependencies array: {pyproject_path}")
 
     lines.insert(dependencies_end, f'    "{dependency}",\n')
