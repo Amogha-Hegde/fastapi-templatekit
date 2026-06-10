@@ -92,6 +92,7 @@ def test_startapp_without_websockets_does_not_add_websocket_dependency(
 def test_startapp_with_database_adds_models_folder(tmp_path, monkeypatch) -> None:
     write_project_files(tmp_path)
     monkeypatch.chdir(tmp_path)
+    monkeypatch.setattr(startapp, "ask_yes_no", lambda question: False)
 
     startapp.handle_startapp(
         argparse.Namespace(
