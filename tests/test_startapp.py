@@ -4,11 +4,11 @@ import argparse
 
 import pytest
 
-from fastapi_template.commands import startapp
+from fastapi_templatekit.commands import startapp
 
 
 def write_project_files(tmp_path) -> None:
-    (tmp_path / "fastapi_template.toml").write_text(
+    (tmp_path / "fastapi_templatekit.toml").write_text(
         '[project]\nname = "demo"\npackage = "demo"\napps_dir = "."\n',
         encoding="utf-8",
     )

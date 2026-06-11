@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import argparse
 
-from fastapi_template.commands import startproject
+from fastapi_templatekit.commands import startproject
 
 
 def test_startproject_generates_gitignore_for_python_build_artifacts(tmp_path) -> None:

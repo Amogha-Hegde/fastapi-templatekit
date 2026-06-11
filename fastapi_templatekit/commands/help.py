@@ -3,7 +3,7 @@ from __future__ import annotations
 import argparse
 
 
-HELP_TEXT = """fastapi-template
+HELP_TEXT = """fastapi-templatekit
 
 Available commands:
 
@@ -11,9 +11,9 @@ Available commands:
     Create a new FastAPI project.
 
     Examples:
-      fastapi-template startproject myproject
-      fastapi-template startproject myproject .
-      fastapi-template startproject myproject ../services/myproject
+      fastapi-templatekit startproject myproject
+      fastapi-templatekit startproject myproject .
+      fastapi-templatekit startproject myproject ../services/myproject
 
     Details:
       - Without directory, creates ./<name>/.
@@ -26,11 +26,11 @@ Available commands:
     Create a root-level app inside an existing generated project.
 
     Example:
-      fastapi-template startapp users
-      fastapi-template startapp users --with-websockets --with-database
+      fastapi-templatekit startapp users
+      fastapi-templatekit startapp users --with-websockets --with-database
 
     Details:
-      - Must be run from a directory containing fastapi_template.toml.
+      - Must be run from a directory containing fastapi_templatekit.toml.
       - Creates endpoints, schemas, service, and router.py.
       - Includes a hello-world GET endpoint.
       - Asks whether to include websockets.
@@ -43,10 +43,10 @@ Available commands:
     Create a root-level healthprobes app inside an existing generated project.
 
     Example:
-      fastapi-template addhealthprobes
+      fastapi-templatekit addhealthprobes
 
     Details:
-      - Must be run from a directory containing fastapi_template.toml.
+      - Must be run from a directory containing fastapi_templatekit.toml.
       - Creates /healthz and /livez GET endpoints.
       - Prints the router registration lines for your project router.py.
       - Use --force to overwrite generated healthprobes files without prompting.
@@ -54,7 +54,7 @@ Available commands:
   help
     Show this command summary.
 
-Use 'fastapi-template <command> --help' for argparse usage details.
+Use 'fastapi-templatekit <command> --help' for argparse usage details.
 """
 
 

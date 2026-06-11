@@ -6,10 +6,10 @@ import sys
 
 import pytest
 
-from fastapi_template import cli
-from fastapi_template.commands import addhealthprobes, help as help_command, project
-from fastapi_template.commands import startapp, startproject
-from fastapi_template.commands.validation import normalize_package_name, validate_package_name
+from fastapi_templatekit import cli
+from fastapi_templatekit.commands import addhealthprobes, help as help_command, project
+from fastapi_templatekit.commands import startapp, startproject
+from fastapi_templatekit.commands.validation import normalize_package_name, validate_package_name
 
 
 def test_build_parser_registers_commands() -> None:
@@ -35,7 +35,7 @@ def test_main_dispatches_selected_handler(monkeypatch) -> None:
         return parser
 
     monkeypatch.setattr(cli, "build_parser", fake_build_parser)
-    monkeypatch.setattr(sys, "argv", ["fastapi-template"])
+    monkeypatch.setattr(sys, "argv", ["fastapi-templatekit"])
 
     cli.main()
 
@@ -43,10 +43,10 @@ def test_main_dispatches_selected_handler(monkeypatch) -> None:
 
 
 def test_cli_module_guard_runs_main(monkeypatch, capsys) -> None:
-    monkeypatch.setattr(sys, "argv", ["fastapi-template", "help"])
-    monkeypatch.delitem(sys.modules, "fastapi_template.cli")
+    monkeypatch.setattr(sys, "argv", ["fastapi-templatekit", "help"])
+    monkeypatch.delitem(sys.modules, "fastapi_templatekit.cli")
 
-    runpy.run_module("fastapi_template.cli", run_name="__main__")
+    runpy.run_module("fastapi_templatekit.cli", run_name="__main__")
 
     assert "Available commands:" in capsys.readouterr().out
 
@@ -64,7 +64,7 @@ def test_project_config_errors(tmp_path) -> None:
     with pytest.raises(SystemExit, match="must be run inside"):
         project.load_project_config(tmp_path)
 
-    (tmp_path / "fastapi_template.toml").write_text(
+    (tmp_path / "fastapi_templatekit.toml").write_text(
         'project = "invalid"\n',
         encoding="utf-8",
     )
@@ -111,7 +111,7 @@ def test_addhealthprobes_generates_app_and_registration_output(
     monkeypatch,
     capsys,
 ) -> None:
-    (tmp_path / "fastapi_template.toml").write_text(
+    (tmp_path / "fastapi_templatekit.toml").write_text(
         '[project]\nname = "demo"\napps_dir = "."\n',
         encoding="utf-8",
     )
@@ -126,7 +126,7 @@ def test_addhealthprobes_generates_app_and_registration_output(
 
 
 def test_addhealthprobes_existing_files_prompt_can_abort(tmp_path, monkeypatch) -> None:
-    (tmp_path / "fastapi_template.toml").write_text(
+    (tmp_path / "fastapi_templatekit.toml").write_text(
         '[project]\nname = "demo"\napps_dir = "."\n',
         encoding="utf-8",
     )

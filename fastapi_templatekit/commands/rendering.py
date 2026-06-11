@@ -5,7 +5,7 @@ from pathlib import Path
 from string import Template
 
 
-TEMPLATE_ROOT = "fastapi_template.templates"
+TEMPLATE_ROOT = "fastapi_templatekit.templates"
 
 
 def render_template(template_path: str, destination: Path, context: dict[str, str]) -> None:

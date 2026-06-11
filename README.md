@@ -1,12 +1,12 @@
-# fastapi-template
+# fastapi-templatekit
 
-[![Tests](https://github.com/Amogha-Hegde/fastapi-template/actions/workflows/ci.yml/badge.svg)](https://github.com/Amogha-Hegde/fastapi-template/actions/workflows/ci.yml)
-[![Coverage](https://codecov.io/gh/Amogha-Hegde/fastapi-template/branch/main/graph/badge.svg)](https://codecov.io/gh/Amogha-Hegde/fastapi-template)
-[![PyPI version](https://img.shields.io/pypi/v/fastapi-template.svg)](https://pypi.org/project/fastapi-template/)
-[![Python versions](https://img.shields.io/pypi/pyversions/fastapi-template.svg)](https://pypi.org/project/fastapi-template/)
-[![PyPI downloads](https://static.pepy.tech/badge/fastapi-template)](https://pepy.tech/project/fastapi-template)
+[![Tests](https://github.com/Amogha-Hegde/fastapi-templatekit/actions/workflows/ci.yml/badge.svg)](https://github.com/Amogha-Hegde/fastapi-templatekit/actions/workflows/ci.yml)
+[![Coverage](https://codecov.io/gh/Amogha-Hegde/fastapi-templatekit/branch/main/graph/badge.svg)](https://codecov.io/gh/Amogha-Hegde/fastapi-templatekit)
+[![PyPI version](https://img.shields.io/pypi/v/fastapi-templatekit.svg)](https://pypi.org/project/fastapi-templatekit/)
+[![Python versions](https://img.shields.io/pypi/pyversions/fastapi-templatekit.svg)](https://pypi.org/project/fastapi-templatekit/)
+[![PyPI downloads](https://static.pepy.tech/badge/fastapi-templatekit)](https://pepy.tech/project/fastapi-templatekit)
 
-A FastAPI template with a root-level, Django-style app layout.
+A FastAPI TemplateKit with a root-level, Django-style app layout.
 
 ## CLI
 
@@ -14,34 +14,34 @@ Create a new project without installing this template into that project's
 environment:
 
 ```bash
-uvx fastapi-template startproject myproject
+uvx fastapi-templatekit startproject myproject
 cd myproject
-uvx fastapi-template startapp users
+uvx fastapi-templatekit startapp users
 ```
 
 Create the project files directly in the current directory:
 
 ```bash
-uvx fastapi-template startproject myproject .
+uvx fastapi-templatekit startproject myproject .
 ```
 
 If generated files already exist, the CLI asks before overwriting them. Use
 `--force` to overwrite without a prompt:
 
 ```bash
-uvx fastapi-template startproject myproject . --force
+uvx fastapi-templatekit startproject myproject . --force
 ```
 
 Create the project at a custom path:
 
 ```bash
-uvx fastapi-template startproject myproject ../services/myproject
+uvx fastapi-templatekit startproject myproject ../services/myproject
 ```
 
 For local development from this repository:
 
 ```bash
-uvx --from . fastapi-template startproject myproject
+uvx --from . fastapi-templatekit startproject myproject
 ```
 
 Generated projects include a Typer management command to discover registered
@@ -54,20 +54,20 @@ uv run myproject urls
 Show available commands and details:
 
 ```bash
-uvx fastapi-template help
+uvx fastapi-templatekit help
 ```
 
 Add health probes to an existing generated project:
 
 ```bash
-uvx fastapi-template addhealthprobes
+uvx fastapi-templatekit addhealthprobes
 ```
 
 Create an app with optional websocket and database scaffolding:
 
 ```bash
-uvx fastapi-template startapp users
-uvx fastapi-template startapp users --with-websockets --with-database
+uvx fastapi-templatekit startapp users
+uvx fastapi-templatekit startapp users --with-websockets --with-database
 ```
 
 Generated projects keep the main router beside `main.py`:
@@ -75,7 +75,7 @@ Generated projects keep the main router beside `main.py`:
 ```text
 myproject/
 ├── pyproject.toml
-├── fastapi_template.toml
+├── fastapi_templatekit.toml
 ├── myproject/
 │   ├── __init__.py
 │   ├── main.py

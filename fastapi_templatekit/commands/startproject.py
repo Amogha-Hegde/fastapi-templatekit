@@ -3,14 +3,14 @@ from __future__ import annotations
 import argparse
 from pathlib import Path
 
-from fastapi_template.commands.rendering import render_template
-from fastapi_template.commands.validation import normalize_package_name, validate_package_name
+from fastapi_templatekit.commands.rendering import render_template
+from fastapi_templatekit.commands.validation import normalize_package_name, validate_package_name
 
 
 PROJECT_TEMPLATES = (
     ("project/pyproject.toml.tpl", "pyproject.toml"),
     ("project/gitignore.tpl", ".gitignore"),
-    ("project/fastapi_template.toml.tpl", "fastapi_template.toml"),
+    ("project/fastapi_templatekit.toml.tpl", "fastapi_templatekit.toml"),
     ("project/env.example.tpl", ".env.example"),
     ("project/README.md.tpl", "README.md"),
     ("project/package/__init__.py.tpl", "{package_name}/__init__.py"),

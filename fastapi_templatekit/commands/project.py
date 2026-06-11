@@ -6,12 +6,12 @@ from typing import Any
 
 
 def load_project_config(project_root: Path) -> dict[str, Any]:
-    marker_path = project_root / "fastapi_template.toml"
+    marker_path = project_root / "fastapi_templatekit.toml"
 
     if not marker_path.exists():
         raise SystemExit(
-            "Error: command must be run inside a fastapi-template project.\n"
-            "Run: fastapi-template startproject <project_name>"
+            "Error: command must be run inside a fastapi-templatekit project.\n"
+            "Run: fastapi-templatekit startproject <project_name>"
         )
 
     marker = tomllib.loads(marker_path.read_text(encoding="utf-8"))

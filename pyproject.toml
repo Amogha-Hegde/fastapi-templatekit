@@ -3,7 +3,7 @@ requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "fastapi-template"
+name = "fastapi-templatekit"
 version = "0.1.0"
 description = "FastAPI project generator with a root-level, Django-style app layout"
 readme = "README.md"
@@ -17,16 +17,16 @@ dev = [
 ]
 
 [project.scripts]
-fastapi-template = "fastapi_template.cli:main"
+fastapi-templatekit = "fastapi_templatekit.cli:main"
 
 [tool.uv]
 package = true
 
 [tool.setuptools.packages.find]
-include = ["fastapi_template*"]
+include = ["fastapi_templatekit*"]
 
 [tool.setuptools.package-data]
-fastapi_template = ["templates/**/*"]
+fastapi_templatekit = ["templates/**/*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
@@ -41,7 +41,7 @@ addopts = [
     "--tb=short",
     "--strict-markers",
     "--disable-warnings",
-    "--cov=fastapi_template",
+    "--cov=fastapi_templatekit",
     "--cov-report=term-missing:skip-covered",
     "--cov-report=xml",
     "--cov-fail-under=90",
@@ -60,7 +60,7 @@ markers = [
 ]
 
 [tool.coverage.run]
-source = ["fastapi_template"]
+source = ["fastapi_templatekit"]
 relative_files = true
 omit = [
     "venv/*",

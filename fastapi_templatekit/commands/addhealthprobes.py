@@ -3,8 +3,8 @@ from __future__ import annotations
 import argparse
 from pathlib import Path
 
-from fastapi_template.commands.project import load_project_config
-from fastapi_template.commands.rendering import render_template
+from fastapi_templatekit.commands.project import load_project_config
+from fastapi_templatekit.commands.rendering import render_template
 
 
 HEALTHPROBES_APP_NAME = "healthprobes"

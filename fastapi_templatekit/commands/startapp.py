@@ -4,9 +4,9 @@ import argparse
 import tomllib
 from pathlib import Path
 
-from fastapi_template.commands.project import load_project_config
-from fastapi_template.commands.rendering import render_template
-from fastapi_template.commands.validation import normalize_package_name, validate_package_name
+from fastapi_templatekit.commands.project import load_project_config
+from fastapi_templatekit.commands.rendering import render_template
+from fastapi_templatekit.commands.validation import normalize_package_name, validate_package_name
 
 
 BASE_APP_TEMPLATES = (

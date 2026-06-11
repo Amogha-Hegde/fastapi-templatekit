@@ -2,15 +2,15 @@ from __future__ import annotations
 
 import argparse
 
-from fastapi_template.commands.addhealthprobes import add_addhealthprobes_parser
-from fastapi_template.commands.help import add_help_parser
-from fastapi_template.commands.startapp import add_startapp_parser
-from fastapi_template.commands.startproject import add_startproject_parser
+from fastapi_templatekit.commands.addhealthprobes import add_addhealthprobes_parser
+from fastapi_templatekit.commands.help import add_help_parser
+from fastapi_templatekit.commands.startapp import add_startapp_parser
+from fastapi_templatekit.commands.startproject import add_startproject_parser
 
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
-        prog="fastapi-template",
+        prog="fastapi-templatekit",
         description="Create FastAPI projects and apps.",
     )
     subparsers = parser.add_subparsers(dest="command", required=True)
