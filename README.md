@@ -8,6 +8,7 @@
 
 A FastAPI TemplateKit with a root-level, Django-style app layout.
 
+
 ## CLI
 
 Create a new project without installing this template into that project's
