@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "fastapi-templatekit"
-version = "0.1.0"
+version = "0.1.1"
 description = "FastAPI project generator with a root-level, Django-style app layout"
 readme = "README.md"
 requires-python = ">=3.11"
