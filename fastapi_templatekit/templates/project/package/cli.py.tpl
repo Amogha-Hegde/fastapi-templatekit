@@ -55,8 +55,22 @@ def discover_urls() -> None:
         )
 
 
-def iter_routes(routes: Iterable[Route], prefix: str = "") -> Iterable[tuple[str, str, str]]:
+def iter_routes(routes: Iterable[object], prefix: str = "") -> Iterable[tuple[str, str, str]]:
     for route in routes:
+        include_context = getattr(route, "include_context", None)
+        included_router = getattr(route, "original_router", None) or getattr(
+            include_context,
+            "included_router",
+            None,
+        )
+        if included_router is not None:
+            include_prefix = getattr(include_context, "prefix", "")
+            yield from iter_routes(
+                getattr(included_router, "routes", ()),
+                normalize_path(prefix, include_prefix),
+            )
+            continue
+
         path = normalize_path(prefix, getattr(route, "path", ""))
 
         if isinstance(route, APIRoute):
@@ -64,13 +78,13 @@ def iter_routes(routes: Iterable[Route], prefix: str = "") -> Iterable[tuple[str
             yield ("HTTP", methods, path)
             continue
 
+        if isinstance(route, APIWebSocketRoute | WebSocketRoute):
+            yield ("WEBSOCKET", "WS", path)
+            continue
+
         if isinstance(route, Route):
             methods = ", ".join(sorted(route.methods or []))
             yield ("HTTP", methods, path)
-            continue
-
-        if isinstance(route, APIWebSocketRoute | WebSocketRoute):
-            yield ("WEBSOCKET", "WS", path)
             continue
 
         if isinstance(route, Mount):
